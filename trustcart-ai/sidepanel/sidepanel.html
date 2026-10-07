@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TrustCart AI - Comprehensive Report</title>
+  <link rel="stylesheet" href="sidepanel.css">
+</head>
+<body>
+  <div class="tc-sidepanel-wrap">
+    <!-- Header -->
+    <header class="tc-sp-header">
+      <div class="tc-sp-brand">
+        <div class="tc-sp-logo">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            <path d="m9 12 2 2 4-4"/>
+          </svg>
+        </div>
+        <div>
+          <h2>TrustCart AI</h2>
+          <span class="tc-sp-subtitle">In-Depth Risk Report</span>
+        </div>
+      </div>
+      <div class="tc-sp-actions">
+        <button id="sp-btn-refresh" class="tc-sp-btn-icon" title="Re-scan Page">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 12a9 9 0 0 0-9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/>
+            <path d="M3 3v5h5"/>
+            <path d="M3 12a9 9 0 0 0 9 9 9.75 9.75 0 0 0 6.74-2.74L21 16"/>
+            <path d="M16 21h5v-5"/>
+          </svg>
+        </button>
+        <button id="sp-btn-dashboard" class="tc-sp-btn-icon" title="Open Full Dashboard">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect width="7" height="9" x="3" y="3" rx="1"/>
+            <rect width="7" height="5" x="14" y="3" rx="1"/>
+            <rect width="7" height="9" x="14" y="12" rx="1"/>
+            <rect width="7" height="5" x="3" y="16" rx="1"/>
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <!-- Content Sections -->
+    <main class="tc-sp-main">
+      <!-- Active Product Card -->
+      <section class="tc-sp-card tc-product-meta-card">
+        <div class="tc-sp-source-badge" id="sp-domain-badge">Scanning...</div>
+        <h3 class="tc-sp-prod-title" id="sp-product-title">Detecting product...</h3>
+        
+        <div class="tc-sp-meta-grid">
+          <div class="tc-sp-meta-item">
+            <label>Price</label>
+            <span class="value" id="sp-price">—</span>
+          </div>
+          <div class="tc-sp-meta-item">
+            <label>MRP / Listed</label>
+            <span class="value" id="sp-original-price">—</span>
+          </div>
+          <div class="tc-sp-meta-item">
+            <label>Discount</label>
+            <span class="value" id="sp-discount">—</span>
+          </div>
+          <div class="tc-sp-meta-item">
+            <label>Rating</label>
+            <span class="value" id="sp-rating">—</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Trust Score Banner -->
+      <section class="tc-sp-card tc-score-hero" id="sp-score-hero">
+        <div class="tc-score-circle-group">
+          <div class="tc-score-val" id="sp-trust-score">--</div>
+          <div class="tc-score-denom">/ 100</div>
+        </div>
+        <div class="tc-score-hero-info">
+          <div class="tc-risk-tag" id="sp-risk-tag">PENDING</div>
+          <p class="tc-score-summary" id="sp-summary">Analysis ready to begin.</p>
+        </div>
+      </section>
+
+      <!-- Risk Factors Breakdown -->
+      <section class="tc-sp-card">
+        <h4 class="tc-sp-heading">Risk Dimension Matrix</h4>
+        
+        <div class="tc-sp-dimension-item" data-cat="price">
+          <div class="dim-head">
+            <span class="name">Price Risk (20%)</span>
+            <span class="score" id="sp-score-price">--/100</span>
+          </div>
+          <div class="dim-bar"><div class="fill" id="sp-bar-price"></div></div>
+          <p class="dim-desc" id="sp-desc-price">Evaluating pricing integrity...</p>
+        </div>
+
+        <div class="tc-sp-dimension-item" data-cat="review">
+          <div class="dim-head">
+            <span class="name">Review Risk (25%)</span>
+            <span class="score" id="sp-score-review">--/100</span>
+          </div>
+          <div class="dim-bar"><div class="fill" id="sp-bar-review"></div></div>
+          <p class="dim-desc" id="sp-desc-review">Evaluating review count & pattern repetition...</p>
+        </div>
+
+        <div class="tc-sp-dimension-item" data-cat="seller">
+          <div class="dim-head">
+            <span class="name">Seller Risk (25%)</span>
+            <span class="score" id="sp-score-seller">--/100</span>
+          </div>
+          <div class="dim-bar"><div class="fill" id="sp-bar-seller"></div></div>
+          <p class="dim-desc" id="sp-desc-seller">Checking storefront identity & reputation...</p>
+        </div>
+
+        <div class="tc-sp-dimension-item" data-cat="policy">
+          <div class="dim-head">
+            <span class="name">Policy Risk (15%)</span>
+            <span class="score" id="sp-score-policy">--/100</span>
+          </div>
+          <div class="dim-bar"><div class="fill" id="sp-bar-policy"></div></div>
+          <p class="dim-desc" id="sp-desc-policy">Auditing return window & warranty...</p>
+        </div>
+
+        <div class="tc-sp-dimension-item" data-cat="description">
+          <div class="dim-head">
+            <span class="name">Description Risk (15%)</span>
+            <span class="score" id="sp-score-desc">--/100</span>
+          </div>
+          <div class="dim-bar"><div class="fill" id="sp-bar-desc"></div></div>
+          <p class="dim-desc" id="sp-desc-description">Examining specifications & claims...</p>
+        </div>
+      </section>
+
+      <!-- Positive Signals Card -->
+      <section class="tc-sp-card tc-positive-card">
+        <h4 class="tc-sp-heading positive-title">
+          <span>✓</span> Verified Positive Indicators
+        </h4>
+        <ul class="tc-sp-signals-list" id="sp-positive-signals"></ul>
+      </section>
+
+      <!-- Warning Signals Card -->
+      <section class="tc-sp-card tc-warning-card">
+        <h4 class="tc-sp-heading warning-title">
+          <span>⚠</span> Risk Warnings & Nuances
+        </h4>
+        <ul class="tc-sp-signals-list" id="sp-warning-signals"></ul>
+      </section>
+
+      <!-- Actionable Buyer Recommendations -->
+      <section class="tc-sp-card">
+        <h4 class="tc-sp-heading">Pre-Purchase Recommendations</h4>
+        <ul class="tc-sp-signals-list recs-list" id="sp-recommendations"></ul>
+      </section>
+
+      <!-- Extracted Specs Preview -->
+      <section class="tc-sp-card">
+        <h4 class="tc-sp-heading">Extracted Specifications</h4>
+        <div class="tc-sp-specs-table" id="sp-specs-container">
+          <div class="tc-muted-notice">No structured specification table found on page.</div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer disclaimer -->
+    <footer class="tc-sp-footer">
+      <p>This score is an informational risk assessment and does not guarantee that a product or seller is legitimate.</p>
+    </footer>
+  </div>
+
+  <script src="../utils/validation.js"></script>
+  <script src="../utils/scoring.js"></script>
+  <script src="../utils/storage.js"></script>
+  <script src="../ai/analyzer.js"></script>
+  <script src="sidepanel.js"></script>
+</body>
+</html>

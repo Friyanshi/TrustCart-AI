@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TrustCart AI - Dashboard & Product Risk Hub</title>
+  <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+  <div class="tc-dash-layout">
+    <!-- Sidebar -->
+    <aside class="tc-dash-sidebar">
+      <div class="tc-dash-brand">
+        <div class="tc-dash-logo">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            <path d="m9 12 2 2 4-4"/>
+          </svg>
+        </div>
+        <div>
+          <h2>TrustCart AI</h2>
+          <span>Risk Intelligence Hub</span>
+        </div>
+      </div>
+
+      <nav class="tc-dash-nav">
+        <button class="nav-item active" data-tab="overview">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect width="7" height="9" x="3" y="3" rx="1"/>
+            <rect width="7" height="5" x="14" y="3" rx="1"/>
+            <rect width="7" height="9" x="14" y="12" rx="1"/>
+            <rect width="7" height="5" x="3" y="16" rx="1"/>
+          </svg>
+          Overview
+        </button>
+        <button class="nav-item" data-tab="history">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"/>
+            <polyline points="12 6 12 12 16 14"/>
+          </svg>
+          Recent Analyses
+        </button>
+        <button class="nav-item" data-tab="saved">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+          </svg>
+          Saved Products
+        </button>
+        <button class="nav-item" data-tab="compare">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M16 3h5v5"/>
+            <path d="M4 20L21 3"/>
+            <path d="M21 16v5h-5"/>
+            <path d="M15 15l6 6"/>
+            <path d="M4 4l5 5"/>
+          </svg>
+          Product Comparison
+        </button>
+        <button class="nav-item" data-tab="settings">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="3"/>
+            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+          </svg>
+          Settings
+        </button>
+      </nav>
+
+      <div class="tc-dash-sidebar-footer">
+        <div class="tc-version-badge">TrustCart AI v1.0.0 (Manifest V3)</div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="tc-dash-main">
+      <!-- Tab 1: OVERVIEW -->
+      <section id="tab-overview" class="tc-tab-pane active">
+        <header class="tc-page-header">
+          <div>
+            <h1>Risk Intelligence Overview</h1>
+            <p>Comprehensive scan metrics and security indicators for your online shopping</p>
+          </div>
+          <button id="btn-seed-sample-history" class="tc-btn-subtle">
+            Load Sample History
+          </button>
+        </header>
+
+        <!-- KPI Metrics Grid -->
+        <div class="tc-kpi-grid">
+          <div class="tc-kpi-card">
+            <div class="tc-kpi-label">Products Analyzed</div>
+            <div class="tc-kpi-val" id="kpi-total-analyzed">0</div>
+            <div class="tc-kpi-sub">Across all stores</div>
+          </div>
+          <div class="tc-kpi-card">
+            <div class="tc-kpi-label">Average Trust Score</div>
+            <div class="tc-kpi-val" id="kpi-avg-score">--</div>
+            <div class="tc-kpi-sub">Out of 100</div>
+          </div>
+          <div class="tc-kpi-card">
+            <div class="tc-kpi-label">High Risk Flagged</div>
+            <div class="tc-kpi-val tc-text-red" id="kpi-high-risk">0</div>
+            <div class="tc-kpi-sub">Warranting caution</div>
+          </div>
+          <div class="tc-kpi-card">
+            <div class="tc-kpi-label">Saved Products</div>
+            <div class="tc-kpi-val tc-text-indigo" id="kpi-saved-count">0</div>
+            <div class="tc-kpi-sub">Bookmarked for later</div>
+          </div>
+        </div>
+
+        <!-- Recent Scans Table Preview -->
+        <div class="tc-dash-card">
+          <div class="tc-card-header">
+            <h3>Recent Scans</h3>
+            <button class="tc-link-btn" onclick="document.querySelector('[data-tab=history]').click()">View All →</button>
+          </div>
+          <div class="tc-table-responsive">
+            <table class="tc-data-table">
+              <thead>
+                <tr>
+                  <th>Product</th>
+                  <th>Domain</th>
+                  <th>Price</th>
+                  <th>Trust Score</th>
+                  <th>Risk Level</th>
+                  <th>Date</th>
+                </tr>
+              </thead>
+              <tbody id="overview-recent-tbody">
+                <tr><td colspan="6" class="text-center text-muted">No recent analyses yet. Click on any shopping page to analyze.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- Tab 2: HISTORY -->
+      <section id="tab-history" class="tc-tab-pane">
+        <header class="tc-page-header">
+          <div>
+            <h1>Analysis History</h1>
+            <p>Every product scan performed by your extension</p>
+          </div>
+          <button id="btn-clear-history" class="tc-btn-danger">Clear History</button>
+        </header>
+
+        <div class="tc-dash-card">
+          <div class="tc-table-responsive">
+            <table class="tc-data-table">
+              <thead>
+                <tr>
+                  <th>Product</th>
+                  <th>Store Domain</th>
+                  <th>Price</th>
+                  <th>Trust Score</th>
+                  <th>Risk Classification</th>
+                  <th>Analyzed At</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="history-table-body">
+                <tr><td colspan="7" class="text-center text-muted">History is empty.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- Tab 3: SAVED -->
+      <section id="tab-saved" class="tc-tab-pane">
+        <header class="tc-page-header">
+          <div>
+            <h1>Saved Products</h1>
+            <p>Products bookmarked for price comparison and safe monitoring</p>
+          </div>
+        </header>
+
+        <div class="tc-dash-card">
+          <div class="tc-table-responsive">
+            <table class="tc-data-table">
+              <thead>
+                <tr>
+                  <th>Select</th>
+                  <th>Product</th>
+                  <th>Store</th>
+                  <th>Price</th>
+                  <th>Trust Score</th>
+                  <th>Risk Level</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="saved-table-body">
+                <tr><td colspan="7" class="text-center text-muted">No saved products yet. Click "Save Product" in the popup on any item.</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="tc-card-footer">
+            <button id="btn-compare-selected" class="tc-btn-primary" disabled>
+              Compare Selected (0)
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Tab 4: COMPARE -->
+      <section id="tab-compare" class="tc-tab-pane">
+        <header class="tc-page-header">
+          <div>
+            <h1>Product Risk Comparison</h1>
+            <p>Side-by-side risk dimension comparison between competing listings</p>
+          </div>
+          <button id="btn-load-compare-samples" class="tc-btn-secondary">Load Comparison Example</button>
+        </header>
+
+        <div class="tc-dash-card" id="compare-container">
+          <div class="tc-empty-state">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="1.5">
+              <path d="M16 3h5v5"/>
+              <path d="M4 20L21 3"/>
+              <path d="M21 16v5h-5"/>
+            </svg>
+            <h3>Select 2 or more products to compare</h3>
+            <p>Go to "Saved Products" or "Recent Analyses" and pick products to compare their risk signals side-by-side.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Tab 5: SETTINGS -->
+      <section id="tab-settings" class="tc-tab-pane">
+        <header class="tc-page-header">
+          <div>
+            <h1>Settings & Preferences</h1>
+            <p>Configure backend API endpoints and operational modes</p>
+          </div>
+        </header>
+
+        <div class="tc-dash-card tc-settings-card">
+          <form id="settings-form">
+            <div class="tc-form-group">
+              <label for="setting-endpoint">AI Backend Analysis Endpoint</label>
+              <input type="url" id="setting-endpoint" class="tc-input" value="http://localhost:3000/api/analyze" required>
+              <span class="tc-form-hint">Backend endpoint handling Gemini AI prompts and proxying. Default: <code>http://localhost:3000/api/analyze</code></span>
+            </div>
+
+            <div class="tc-form-group">
+              <label class="tc-switch-label">
+                <input type="checkbox" id="setting-notifications" checked>
+                <span class="tc-switch-text">High-Risk Banner Warnings</span>
+              </label>
+              <span class="tc-form-hint">Highlight high-risk products with an amber or red badge on the extension icon.</span>
+            </div>
+
+            <div class="tc-form-group">
+              <label class="tc-switch-label">
+                <input type="checkbox" id="setting-demomode">
+                <span class="tc-switch-text">Enable Demo Testing Fallbacks</span>
+              </label>
+              <span class="tc-form-hint">Allows testing extension features on non-shopping pages with sample product datasets.</span>
+            </div>
+
+            <button type="submit" class="tc-btn-primary">Save Settings</button>
+            <span id="settings-saved-indicator" class="tc-saved-msg hidden">Settings saved successfully ✓</span>
+          </form>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="../utils/validation.js"></script>
+  <script src="../utils/scoring.js"></script>
+  <script src="../utils/storage.js"></script>
+  <script src="../ai/analyzer.js"></script>
+  <script src="dashboard.js"></script>
+</body>
+</html>

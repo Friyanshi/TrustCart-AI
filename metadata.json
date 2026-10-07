@@ -1,0 +1,6 @@
+{
+  "name": "TrustCart AI",
+  "description": "AI-powered Online Product Risk Analyzer Chrome Extension with transparent risk scoring, explainable signals, and browser integration.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

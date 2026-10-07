@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TrustCart AI - Online Product Risk Analyzer</title>
+    <meta name="description" content="AI-powered Online Product Risk Analyzer Chrome Extension with transparent risk scoring, explainable signals, and browser integration." />
+    <meta property="og:title" content="TrustCart AI - Online Product Risk Analyzer" />
+    <meta property="og:description" content="AI-powered Online Product Risk Analyzer Chrome Extension with transparent risk scoring, explainable signals, and browser integration." />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <script>
+      // Suppress Vite dev server websocket disconnection messages in iframe preview
+      window.addEventListener('unhandledrejection', function(event) {
+        if (event.reason && (String(event.reason).includes('WebSocket') || String(event.reason?.message).includes('WebSocket'))) {
+          event.preventDefault();
+        }
+      });
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
+

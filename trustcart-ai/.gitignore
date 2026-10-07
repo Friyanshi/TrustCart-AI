@@ -1,0 +1,9 @@
+# TrustCart AI Extension
+node_modules/
+.env
+.env.local
+.DS_Store
+*.pem
+dist/
+build/
+*.log

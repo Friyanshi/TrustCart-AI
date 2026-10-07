@@ -1,0 +1,348 @@
+/* TrustCart AI - Side Panel Styles */
+
+:root {
+  --primary: #4f46e5;
+  --primary-hover: #4338ca;
+  --bg-main: #f8fafc;
+  --card-bg: #ffffff;
+  --border: #e2e8f0;
+  --text-main: #0f172a;
+  --text-muted: #64748b;
+  
+  --low: #10b981;
+  --low-bg: #ecfdf5;
+  --mod: #f59e0b;
+  --mod-bg: #fffbeb;
+  --high: #f97316;
+  --high-bg: #fff7ed;
+  --vhigh: #ef4444;
+  --vhigh-bg: #fef2f2;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background-color: var(--bg-main);
+  color: var(--text-main);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.tc-sidepanel-wrap {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.tc-sp-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: white;
+  border-bottom: 1px solid var(--border);
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.tc-sp-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.tc-sp-logo {
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
+  background: var(--primary);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tc-sp-brand h2 {
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.tc-sp-subtitle {
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+.tc-sp-actions {
+  display: flex;
+  gap: 6px;
+}
+
+.tc-sp-btn-icon {
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 6px;
+  color: var(--text-muted);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tc-sp-btn-icon:hover {
+  background: #f1f5f9;
+  color: var(--text-main);
+}
+
+.tc-sp-main {
+  flex: 1;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.tc-sp-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
+}
+
+.tc-sp-source-badge {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--primary);
+  background: #eef2ff;
+  padding: 2px 8px;
+  border-radius: 4px;
+  margin-bottom: 6px;
+}
+
+.tc-sp-prod-title {
+  font-size: 14.5px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  line-height: 1.35;
+}
+
+.tc-sp-meta-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  background: #f8fafc;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.tc-sp-meta-item label {
+  display: block;
+  font-size: 10.5px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.tc-sp-meta-item .value {
+  font-weight: 700;
+  font-size: 13px;
+}
+
+/* Score hero */
+.tc-score-hero {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  border-left: 4px solid var(--primary);
+}
+
+.tc-score-hero.low { border-left-color: var(--low); }
+.tc-score-hero.mod { border-left-color: var(--mod); }
+.tc-score-hero.high { border-left-color: var(--high); }
+.tc-score-hero.vhigh { border-left-color: var(--vhigh); }
+
+.tc-score-circle-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #f1f5f9;
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.tc-score-val {
+  font-size: 24px;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.tc-score-denom {
+  font-size: 10px;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.tc-risk-tag {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 800;
+  padding: 3px 8px;
+  border-radius: 4px;
+  background: #eef2ff;
+  color: var(--primary);
+  margin-bottom: 4px;
+}
+
+.tc-risk-tag.low { background: var(--low-bg); color: var(--low); }
+.tc-risk-tag.mod { background: var(--mod-bg); color: var(--mod); }
+.tc-risk-tag.high { background: var(--high-bg); color: var(--high); }
+.tc-risk-tag.vhigh { background: var(--vhigh-bg); color: var(--vhigh); }
+
+.tc-score-summary {
+  font-size: 12px;
+  color: var(--text-main);
+  line-height: 1.4;
+}
+
+.tc-sp-heading {
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--text-main);
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.tc-positive-card .positive-title { color: #059669; }
+.tc-warning-card .warning-title { color: #d97706; }
+
+/* Dimensions */
+.tc-sp-dimension-item {
+  margin-bottom: 12px;
+}
+
+.tc-sp-dimension-item:last-child {
+  margin-bottom: 0;
+}
+
+.dim-head {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.dim-bar {
+  width: 100%;
+  height: 6px;
+  background: #e2e8f0;
+  border-radius: 3px;
+  overflow: hidden;
+  margin-bottom: 4px;
+}
+
+.dim-bar .fill {
+  height: 100%;
+  border-radius: 3px;
+  transition: width 0.6s ease;
+}
+
+.dim-desc {
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+/* Signals list */
+.tc-sp-signals-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 12px;
+}
+
+.tc-sp-signals-list li {
+  position: relative;
+  padding-left: 18px;
+  line-height: 1.4;
+}
+
+.tc-positive-card .tc-sp-signals-list li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: #10b981;
+  font-weight: bold;
+}
+
+.tc-warning-card .tc-sp-signals-list li::before {
+  content: "⚠";
+  position: absolute;
+  left: 0;
+  color: #f59e0b;
+  font-weight: bold;
+}
+
+.recs-list li::before {
+  content: "→";
+  position: absolute;
+  left: 0;
+  color: var(--primary);
+  font-weight: bold;
+}
+
+/* Specs */
+.tc-sp-specs-table {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 11.5px;
+}
+
+.spec-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 4px 0;
+  border-bottom: 1px dashed var(--border);
+}
+
+.spec-row span.k {
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.spec-row span.v {
+  font-weight: 600;
+  text-align: right;
+}
+
+.tc-muted-notice {
+  font-size: 11.5px;
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+.tc-sp-footer {
+  padding: 14px 16px;
+  border-top: 1px solid var(--border);
+  font-size: 11px;
+  color: var(--text-muted);
+  text-align: center;
+  background: white;
+}

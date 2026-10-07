@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TrustCart AI</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="tc-container">
+    <!-- Header -->
+    <header class="tc-header">
+      <div class="tc-brand">
+        <div class="tc-logo-badge">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            <path d="m9 12 2 2 4-4"/>
+          </svg>
+        </div>
+        <div>
+          <h1 class="tc-title">TrustCart AI</h1>
+          <p class="tc-tagline">Before You Buy, Know the Risk.</p>
+        </div>
+      </div>
+    </header>
+
+    <!-- State 1: IDLE / DETECTION -->
+    <section id="view-detection" class="tc-view active">
+      <!-- Two Scan Options Switcher -->
+      <div class="tc-mode-toggle">
+        <button id="btn-mode-page" class="tc-mode-btn active">⚡ Current Page</button>
+        <button id="btn-mode-link" class="tc-mode-btn">🔗 Paste Link</button>
+      </div>
+
+      <!-- Mode 1: Current Page Scanner -->
+      <div id="box-mode-page" class="tc-card">
+        <div class="tc-status-banner" id="detection-status-banner">
+          <div class="tc-pulse-dot" id="detection-indicator"></div>
+          <span id="detection-status-text">Detecting product on current page...</span>
+        </div>
+
+        <div id="product-preview-box" class="tc-preview-box hidden">
+          <div class="tc-field-label">Current Product:</div>
+          <div class="tc-product-name" id="detected-product-title">—</div>
+          
+          <div class="tc-meta-row">
+            <div>
+              <span class="tc-field-label">Price:</span>
+              <span class="tc-product-price" id="detected-product-price">—</span>
+            </div>
+            <div>
+              <span class="tc-field-label">Store:</span>
+              <span class="tc-product-domain" id="detected-product-domain">—</span>
+            </div>
+          </div>
+        </div>
+
+        <div id="no-product-box" class="tc-no-product hidden">
+          <p class="tc-muted-text" id="no-product-text">This page does not contain product information.</p>
+          <div class="tc-row-buttons">
+            <button id="btn-retry-detection" class="tc-btn-secondary" style="width: 100%;">
+              Refresh & Retry
+            </button>
+          </div>
+        </div>
+
+        <button id="btn-analyze" class="tc-btn-primary hidden">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"/>
+            <path d="m21 21-4.3-4.3"/>
+          </svg>
+          Scan Current Product Page
+        </button>
+      </div>
+
+      <!-- Mode 2: Paste Link Scanner -->
+      <div id="box-mode-link" class="tc-card hidden">
+        <div class="tc-input-group">
+          <label class="tc-field-label">Paste Product URL:</label>
+          <input type="text" id="input-pasted-url" class="tc-input-text" placeholder="https://amazon.com/dp/... or store link">
+        </div>
+        <button id="btn-analyze-pasted" class="tc-btn-primary" style="margin-top: 10px;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"/>
+            <path d="m21 21-4.3-4.3"/>
+          </svg>
+          Scan Product Link
+        </button>
+      </div>
+
+      <div class="tc-footer-note">
+        <span>Checks for Real vs. Fraud vs. AI-Generated listings.</span>
+      </div>
+    </section>
+
+    <!-- State 2: SCANNING / ANIMATION -->
+    <section id="view-scanning" class="tc-view">
+      <div class="tc-card tc-text-center tc-py-6">
+        <div class="tc-scanner-radar">
+          <div class="tc-radar-sweep"></div>
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#4f46e5" stroke-width="2">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+          </svg>
+        </div>
+
+        <h3 class="tc-scan-headline" id="scan-headline">Scanning product page…</h3>
+        <p class="tc-scan-subhead">Analyzing structured signals & risk indicators</p>
+
+        <ul class="tc-scan-steps" id="scan-steps">
+          <li class="tc-step" data-step="1">
+            <span class="tc-step-icon">○</span> Product authenticity
+          </li>
+          <li class="tc-step" data-step="2">
+            <span class="tc-step-icon">○</span> Price & discount integrity
+          </li>
+          <li class="tc-step" data-step="3">
+            <span class="tc-step-icon">○</span> AI bot review detection
+          </li>
+          <li class="tc-step" data-step="4">
+            <span class="tc-step-icon">○</span> Seller verification
+          </li>
+          <li class="tc-step" data-step="5">
+            <span class="tc-step-icon">○</span> Return & warranty terms
+          </li>
+        </ul>
+
+        <div class="tc-scan-complete hidden" id="scan-complete-msg">
+          <span class="tc-check-badge">✓</span> Scan complete
+        </div>
+      </div>
+    </section>
+
+    <!-- State 3: RESULTS / TRUST SCORE -->
+    <section id="view-results" class="tc-view">
+      <!-- Verdict Banner -->
+      <div id="verdict-banner" class="tc-verdict-box">
+        <div class="tc-verdict-title" id="verdict-title">REAL & AUTHENTIC</div>
+        <div class="tc-verdict-desc" id="verdict-desc">Verified pricing, seller identity, and review history.</div>
+      </div>
+
+      <!-- Circular Score Card -->
+      <div class="tc-card tc-score-card">
+        <div class="tc-score-layout">
+          <div class="tc-circle-score-wrap">
+            <svg class="tc-score-svg" viewBox="0 0 100 100">
+              <circle class="tc-score-bg" cx="50" cy="50" r="42" />
+              <circle class="tc-score-fill" id="score-circle-bar" cx="50" cy="50" r="42" />
+            </svg>
+            <div class="tc-score-number" id="result-trust-score">--</div>
+          </div>
+          <div class="tc-score-details">
+            <div class="tc-score-label">TRUST SCORE</div>
+            <div class="tc-risk-pill" id="result-risk-level">CALCULATING</div>
+            <p class="tc-score-context">Based on available signals on page</p>
+          </div>
+        </div>
+
+        <button id="btn-explain-score" class="tc-btn-outline">
+          Why this score?
+        </button>
+
+        <div id="score-explanation-box" class="tc-explanation-box hidden">
+          <div class="tc-expl-title" id="expl-title">Score Breakdown</div>
+          <ul class="tc-expl-list" id="expl-points"></ul>
+        </div>
+      </div>
+
+      <!-- Positive Signals -->
+      <div class="tc-card tc-signals-card positive">
+        <h4 class="tc-section-title tc-text-emerald">✓ Authenticity & Positive Signals</h4>
+        <ul class="tc-bullet-list" id="positive-signals-list"></ul>
+      </div>
+
+      <!-- Warning Signals -->
+      <div class="tc-card tc-signals-card warning" id="card-warnings">
+        <h4 class="tc-section-title tc-text-amber">⚠ Warning & Risk Signals</h4>
+        <ul class="tc-bullet-list" id="warnings-list"></ul>
+      </div>
+
+      <!-- Recommendations -->
+      <div class="tc-card tc-recs-card">
+        <h4 class="tc-section-title">Before Purchasing:</h4>
+        <ul class="tc-bullet-list" id="recommendations-list"></ul>
+      </div>
+
+      <div class="tc-actions-row">
+        <button id="btn-rescan" class="tc-btn-primary" style="width: 100%;">
+          Scan Another Product
+        </button>
+      </div>
+
+      <div class="tc-disclaimer-box">
+        <span>This score is an informational risk assessment and does not guarantee that a product or seller is legitimate.</span>
+      </div>
+    </section>
+  </div>
+
+  <script src="../utils/validation.js"></script>
+  <script src="../utils/scoring.js"></script>
+  <script src="../utils/storage.js"></script>
+  <script src="../ai/analyzer.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>
